@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from './Button';
 import Cell from './Cell';
+import Block from './Block';
 
 function initialValues() {
     const values = [];
@@ -35,6 +36,9 @@ export default function Board() {
         }
         return (<div className='board-row'>{cols}</div>);
     }
+    function Blocks() {
+        return <table><tbody><tr><td><Block/></td><td><Block/></td></tr></tbody></table>
+    }
     const rows = [];
     const buttons = [];
     for (let r = 0; r < 9; r++) {
@@ -42,5 +46,5 @@ export default function Board() {
         buttons.push(<Button value={r+1} key={r} onClick={setValue}/>);
     }
     buttons.push(<button onClick={clearValue} key={10} >Clear</button>);
-    return (<><div>{rows}</div><div>{buttons}</div></>);
+    return (<><div>{rows}</div><Blocks/><div>{buttons}</div></>);
 }
